@@ -1,0 +1,18 @@
+TO INSTALL THE PROGRAM: "sudo cp Ccalculator /usr/bin/"
+ps: your shell must be in the same directory as the "Ccalculator" file, or else the command above will not work. To ensure your shell is in the same directory as the Ccalculator file, type "ls", if you see "Ccalculator in the output, then the install command will work.
+
+If you don't see the "Ccalculator" file in the output of "ls":
+1- Open your file manager
+2- Go inside the "Ccalculator" folder ( the folder where this README file is in )
+3- Right-Click and select "Open Terminal Here" ( note that this message may change depending on your file manager, "Open Terminal Here" is how it is on dolphin )
+4- type "ls" and you should see the "Ccalculator" file
+
+
+AFTER THE PROGRAM IS INSTALLED, YOU CAN JUST TYPE "Ccalculator" ON YOUR TERMINAL AND IT WILL OPEN :D
+
+
+IF YOU CAN'T OPEN THE PROGRAM, ENSURE THAT "ncurses" IS INSTALLED.
+YOUR DISTRO'S REPOSITORY PROBABLY HAS IT.
+
+
+TO QUIT THE PROGRAM, PRESS "Ctrl-C"
