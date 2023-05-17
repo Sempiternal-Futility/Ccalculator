@@ -1,7 +1,5 @@
 //DRAWS THE TUI
 
-#include <stdlib.h>
-
 int UI()
 {
 
@@ -254,6 +252,21 @@ void DrawDivis( short posY, short posX )
 
 }
 
+//DRAWS THE DOT SYMBOL .
+void DrawDot( short posY, short posX )
+{
+
+   move( posY, posX );
+   printw( "%s", " _" );
+
+   move( posY +1, posX );
+   printw( "%s", "/ \\" );
+
+   move( posY +2, posX );
+   printw( "%s", "\\_/" );
+
+}
+
 
 //DRAWS THE STARTING TABLE
 void DrawStartTable()
@@ -274,6 +287,7 @@ void DrawStartTable()
    DrawBoxMinus();
    DrawBoxMult();
    DrawBoxDivis();
+   DrawBoxDot();
 
 
 
@@ -287,105 +301,21 @@ void DrawStartTable()
    DrawSeven( 19, 5 );
    DrawEight( 19, 13 );
    DrawNine( 19, 21 );
-   DrawZero( 25, 13 );
+   DrawZero( 25, 9 );
    
    DrawPlus( 8, 31 );
-   DrawMinus( 14, 31 );
+   DrawMinus( 13, 31 );
    DrawMult( 19, 31 );
-   DrawDivis( 25, 31 );
+   DrawDivis( 24, 31 );
+   DrawDot( 25, 22 );
 
 }
 
-//MAKES THE INPUTTED SQUARE BLINK
-void BlinkSquare()
+//MAKES THE INPUTTED SQUARE BLINK, AND RETURNS THE OPERATOR
+char BlinkInput( char getInput )
 {
 
-   char getInput;
-   char finalNumber[33] = "0";
-   
-   double numberOne = 0;
-   char operator;
-   double numberTwo = 0;
-  
-
- for( int i = 1; i < 4; i++ )
- {
-
-
-  //RESETS finalNumber STRING
-  for( int r = 1; r < 33; r++ )
-  { finalNumber[r] = ' '; }
-
-
- 
-  for( int j = 1; j < 33; j++ )
-  {
-  
-   getInput = getch();
-
-   if( getInput != '\n' || getInput != 32 )
-      finalNumber[j] = getInput;
-
-
-   // IF THE USER PRESSES SPACE, EVERYTHING ERASES IN THAT LINE
-   if( getInput == 32 )
-   {
-
-      for( int k = 1; k < 33; k++ )
-         finalNumber[k] = ' ';
-
-
-      if( i == 1 )
-      {
-         move( 2, 2 ); 
-         printw( "%s", "                                 " );
-         move( 2, 2 );
-      }
-
-      else if( i == 2 )
-      {
-         move( 3, 2 ); 
-         printw( "%s", "                                 " );
-         move( 3, 2 );
-      }
-
-      else if( i == 3 )
-      {
-         move( 4, 2 ); 
-         printw( "%s", "                                 " );
-         move( 4, 2 );
-      }
-
-
-      j = 0;
-
-   }
-
-
-   //THESE 3 IF STATEMNTS DRAW THE INPUTTED NUMBERS TO THE DISPLAY BOX
-   if( getInput != 32 )
-   {
-
-      if( i == 1 )
-      {
-         move( 2, j +1 );
-         printw( "%c", getInput );
-      }
-
-      else if( i == 2 )
-      {
-         move( 3, j +1 );
-         printw( "%c", getInput );
-      }
-
-      else if( i == 3 )
-      {
-         move( 4, j +1 );
-         printw( "%c", getInput );
-      }
-
-   }
-
+   char givenOperator;
 
 
    //NUMBER 1
@@ -510,7 +440,7 @@ void BlinkSquare()
       refresh();
       system("sleep 0.10");
       DrawSeven( 19, 5 );
-       
+    
    }
 
 
@@ -528,7 +458,7 @@ void BlinkSquare()
       refresh();
       system("sleep 0.10");
       DrawEight( 19, 13 );
-       
+    
    }
 
 
@@ -546,7 +476,7 @@ void BlinkSquare()
       refresh();
       system("sleep 0.10");
       DrawNine( 19, 21 );
-       
+    
    }
 
 
@@ -556,19 +486,19 @@ void BlinkSquare()
 
       for( short i = 25; i < 29; i++ )
       {
-         move( i, 13 );
+         move( i, 9 );
          printw("%s", "     "); 
       }
 
       //DRAWS THE NUMBER ZERO AGAIN
       refresh();
       system("sleep 0.10");
-      DrawZero( 25, 13 );
-       
+      DrawZero( 25, 9 );
+    
    }
 
 
-   
+
    //PLUS SYMBOL
    else if( getInput == '+' )
    {
@@ -584,9 +514,8 @@ void BlinkSquare()
       system("sleep 0.10");
       DrawPlus( 8, 31 );
 
-      if( i == 2 )
-         operator = '+';
-       
+      givenOperator = '+';
+    
    }
 
 
@@ -594,16 +523,15 @@ void BlinkSquare()
    else if( getInput == '-' )
    {
 
-      move( 15, 31 );
+      move( 14, 31 );
       printw("%s", "     "); 
 
       //DRAWS THE MINUS SYMBOL AGAIN
       refresh();
       system("sleep 0.10");
-      DrawMinus( 14, 31 );
+      DrawMinus( 13, 31 );
 
-      if( i == 2 )
-         operator = '-';
+      givenOperator = '-';
        
    }
 
@@ -623,9 +551,8 @@ void BlinkSquare()
       system("sleep 0.10");
       DrawMult( 19, 31 );
 
-      if( i == 2 )
-         operator = '*';
-       
+      givenOperator = '*';
+
    }
 
 
@@ -633,7 +560,7 @@ void BlinkSquare()
    else if( getInput == '/' )
    {
 
-      for( short i = 25; i < 28; i++ )
+      for( short i = 24; i < 27; i++ )
       {
          move( i, 31 );
          printw("%s", "     "); 
@@ -642,61 +569,37 @@ void BlinkSquare()
       //DRAWS THE MULT SYMBOL AGAIN
       refresh();
       system("sleep 0.10");
-      DrawDivis( 25, 31 );
+      DrawDivis( 24, 31 );
 
-      if( i == 2 )
-         operator = '/';
+      givenOperator = '/';
        
    }
 
-   else if( getInput == '\n' )
+
+   //DOT SYMBOL
+   else if( getInput == '.' )
    {
-      j = 34;
+  
+      for( short i = 25; i < 28; i++ )
+      {
+         move( i, 22 );
+         printw("%s", "    "); 
+      } 
 
-      move( i +1, 38 ); printw( "%c", '|' ); //FIXES LITTLE BUG THAT ERASES THE EDGE OF THE DISPLAY BOX
-
-      move( i +2, 2 );
+      //DRAWS THE DOT SYMBOL AGAIN      
+      refresh();
+      system("sleep 0.10");
+      DrawDot( 25, 22 );
+   
    }
 
-
-  }
-
-   if( i == 1 )
-      numberOne = atof( finalNumber );
-
-
-   else if( i == 3 )
-      numberTwo = atof( finalNumber );
-
- }
-
-
-   if( operator == '+' )
-      Sum( numberOne, numberTwo ); 
-
-   else if( operator == '-' )
-      Minus( numberOne, numberTwo );
-
-   else if( operator == '*' )
-      Mult( numberOne, numberTwo );
-
-   else if( operator == '/' )
-      Divis( numberOne, numberTwo );
-
-   else
-   {
-      ClearDisplayBox();
-      move( 2, 2 );
-      printw( "%s", "GIVEN OPERATOR IS NOT VALID" );
-
-      getch();
-   }
-
+      
+   return givenOperator;
 
 }
 
 
-//ERASES THE WHOLE DISPLAY BOX
+// ERASES THE WHOLE DISPLAY BOX AND THEN DRAWS IT AGAIN
 void ClearDisplayBox()
 {
 

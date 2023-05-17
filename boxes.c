@@ -411,22 +411,24 @@ void DrawBoxZero()
 {
 
    //DRAWS THE TOP HORIZONTAL LINE
-   move( 24, 13 );
+   move( 24, 5 );
    printw( "%s", HLINE );
+   printw( "%s", HLINE );
+   printw( "%s", "===" );
 
 
    
    //DRAWS THE LEFT VERTICAL LINE
-   move( 25, 12 );
+   move( 25, 4 );
    printw( "%c", VLINE );
 
-   move( 26, 12 );
+   move( 26, 4 );
    printw( "%c", VLINE );
 
-   move( 27, 12 );
+   move( 27, 4 );
    printw( "%c", VLINE );
 
-   move( 28, 12 );
+   move( 28, 4 );
    printw( "%c", VLINE );
 
 
@@ -446,12 +448,13 @@ void DrawBoxZero()
 
 
    //DRAWS THE BOTTOM HORIZONTAL LINE   
-   move( 29, 13 );
+   move( 29, 5 );
    printw( "%s", HLINE );
+   printw( "%s", HLINE );
+   printw( "%s", "===" );
+
 
 }
-
-
 
 //DRAWS A BOX AROUND THE PLUS SYMBOL
 void DrawBoxPlus()
@@ -497,37 +500,37 @@ void DrawBoxMinus()
 {
 
    //DRAWS THE TOP HORIZONTAL LINE
-   move( 13, 31 );
+   move( 12, 31 );
    printw( "%s", HLINE );
 
 
 
    //DRAWS THE LEFT VERTICAL LINE
+   move( 13, 30 );
+   printw( "%c", VLINE );
+
    move( 14, 30 );
    printw( "%c", VLINE );
 
    move( 15, 30 );
    printw( "%c", VLINE );
 
-   move( 16, 30 );
-   printw( "%c", VLINE );
-
 
 
    //DRAWS THE RIGHT VERTICAL LINE
+   move( 13, 36 );
+   printw( "%c", VLINE );
+
    move( 14, 36 );
    printw( "%c", VLINE );
 
    move( 15, 36 );
    printw( "%c", VLINE );
 
-   move( 16, 36 );
-   printw( "%c", VLINE );
-
 
 
    //DRAWS THE BOTTOM HORIZONTAL LINE
-   move( 17, 31 );
+   move( 16, 31 );
    printw( "%s", HLINE );
 
 }
@@ -576,36 +579,78 @@ void DrawBoxDivis()
 {
 
    //DRAWS THE TOP HORIZONTAL LINE
-   move( 24, 31 );
+   move( 23, 31 );
    printw( "%s", HLINE );
 
 
 
    //DRAWS THE LEFT VERTICAL LINE
+   move( 24, 30 );
+   printw( "%c", VLINE );
+
    move( 25, 30 );
    printw( "%c", VLINE );
 
    move( 26, 30 );
    printw( "%c", VLINE );
 
-   move( 27, 30 );
-   printw( "%c", VLINE );
-
 
    //DRAWS THE RIGHT VERTICAL LINE
+   move( 24, 36 );
+   printw( "%c", VLINE );
+
    move( 25, 36 );
    printw( "%c", VLINE );
 
    move( 26, 36 );
    printw( "%c", VLINE );
 
-   move( 27, 36 );
-   printw( "%c", VLINE );
-
 
 
    //DRAWS THE BOTTOM HORIZONTAL LINE   
-   move( 28, 31 );
+   move( 27, 31 );
+   printw( "%s", HLINE );
+
+}
+
+//DRAWS A BOX AROUND THE DOT SYMBOL
+void DrawBoxDot()
+{
+
+   //DRAWS THE HORIZONTAL TOP LINE
+   move( 24, 21 );
+   printw( "%s", HLINE );
+
+
+   //DRAWS THE LEFT VERTICAL LINE
+   move( 25, 20 );
+   printw( "%c", VLINE );
+
+   move( 26, 20 );
+   printw( "%c", VLINE );
+
+   move( 27, 20 );
+   printw( "%c", VLINE );
+
+   move( 28, 20 );
+   printw( "%c", VLINE );
+
+   //DRAWS THE RIGHT VERTICAL LINE
+   move( 25, 26 );
+   printw( "%c", VLINE );
+
+   move( 26, 26 );
+   printw( "%c", VLINE );
+
+   move( 27, 26 );
+   printw( "%c", VLINE );
+
+   move( 28, 26 );
+   printw( "%c", VLINE );
+
+
+   //DRAWS THE BOTTOM HORIZONTAL LINE
+   move( 29, 21 );
    printw( "%s", HLINE );
 
 }

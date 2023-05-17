@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <curses.h>
 
- /*TODO:
-  * BE ABLE TO PRESS BACKSPACE TO ERASE
-  * ADD A "." ASCII BUTTON AND MAKE IT BLINK WHEN THE USER PRESSES IT
- */
-
 int main()
 {
    
    initscr();
    noecho();
 
-   UI();
-   BlinkSquare();
+   //LOOPS THE PROGRAM UNTIL USER ENDS IT WITH "^C"
+   while( 1 > 0 )
+   {
+      UI();
+      SolveMath();
+
+      ClearDisplayBox();
+   }
 
    endwin();
 
